@@ -1,0 +1,12 @@
+{
+  "name": "ts-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.26.14"
+  },
+  "scripts": {
+    "start": "browser-sync -w"
+  }
+}
