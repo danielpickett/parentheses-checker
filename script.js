@@ -39,7 +39,7 @@ const hasBalancedBrackets = (str) => {
 const updateValue = () => {
   const valid = hasBalancedBrackets(input.value)
   output.innerText = valid
-    ? '✌️ Piece and happiness ✌️'
+    ? '✌️ Peace and happiness ✌️'
     : '🔥 WHOA!! Bad code alert! 🔥'
   if (valid) output.classList.remove('invalid')
   else output.classList.add('invalid')
