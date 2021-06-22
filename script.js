@@ -20,11 +20,11 @@ const hasBalancedBrackets = (str) => {
     '[': ']',
     '{': '}',
   }
-
   let isInQuote = false
 
   for (let i = 0; i < str.length; i++) {
     const char = str[i]
+    // account for LISP double quote string literals
     if (char === '"' && str[i - 1] !== '\\') isInQuote = !isInQuote
     if (char in map && !isInQuote) stack.push(char)
     else if (Object.values(map).indexOf(char) > -1 && !isInQuote) {
@@ -33,9 +33,7 @@ const hasBalancedBrackets = (str) => {
     }
   }
 
-  if (stack.length !== 0) return false
-
-  return true
+  return stack.length !== 0 ? false : true
 }
 
 const updateValue = () => {

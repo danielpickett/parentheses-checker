@@ -28,7 +28,44 @@
         Should ignore brackets in LISP string literals (double quotes only),
         accounting for escaped double quote characters
       </li>
+      <li>
+        The GitHub repo:
+        <a href="https://github.com/danielpickett/parentheses-checker"
+          >https://github.com/danielpickett/parentheses-checker</a
+        >
+      </li>
+      <li>
+        The main function:
+        <br />
+        <pre class="code">
+const hasBalancedBrackets = (str) => {
+  str = str.replace(/;.*/, '')
+  const stack = []
+  const map = {
+    '(': ')',
+    '[': ']',
+    '{': '}',
+  }
+  let isInQuote = false
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i]
+    if (char === '"' && str[i - 1] !== '\\') isInQuote = !isInQuote
+    if (char in map && !isInQuote) stack.push(char)
+    else if (Object.values(map).indexOf(char) > -1 && !isInQuote) {
+      if (char === map[stack.slice(-1)]) stack.pop()
+      else return false
+    }
+  }
+
+  return stack.length !== 0 ? false : true
+}
+            </pre
+        >
+      </li>
     </ul>
+    <br />
+
     <script src="./script.js"></script>
   </body>
 </html>
